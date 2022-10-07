@@ -7,29 +7,55 @@ For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { f
 
 */
 
-function whatIsInAName(collection, source) {
-  var arr = [];
+// function whatIsInAName(collection, source) {
+//   var arr = [];
 
-    const sourceKeys = Object.keys(source)
+//     const sourceKeys = Object.keys(source)
     
-    for (let i = 0; i < collection.length; i++) {
-        Object.keys(collection[i]).forEach(key => {
-            if (collection[i].hasOwnProperty(sourceKeys[0]) && collection[i][key] == source[sourceKeys[0]]) {
-                arr.push(collection[i])
+//     for (let i = 0; i < collection.length; i++) {
+//         Object.keys(collection[i]).forEach(key => {
+//             if (collection[i].hasOwnProperty(sourceKeys[0]) && collection[i][key] == source[sourceKeys[0]]) {
+//                 arr.push(collection[i])
     
-            }
+//             }
 
-        })
+//         })
         
+//     }
+
+
+//     console.log(arr);
+//   // Only change code above this line
+//   return arr;
+// }
+
+//revisited 10/7/2022
+
+function whatIsInAName(collection, source) {
+  const arr = [];
+  // Only change code below this line
+  const sourceKeys = Object.keys(source);
+
+  for (let i = 0; i < collection.length; i++) {
+    let same = true;
+
+    for (let j = 0; j < sourceKeys.length; j++) {
+        if (collection[i][sourceKeys[j]] != source[sourceKeys[j]]) {
+          same = false;
+        }
     }
 
+    if (same) {
+      arr.push(collection[i]);
+    }
+  }
 
-    console.log(arr);
   // Only change code above this line
   return arr;
 }
 
-whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 })
+
+console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 }));
 
 
 /**
